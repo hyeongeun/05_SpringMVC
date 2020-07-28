@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+#joinForm {
+	border: solid 0px red;
+	width: 550px;
+	height: 380px;
+	
+	margin: 100px auto;
+}
+
+#joinForm #title {
+	font-weight: bold;
+	
+	border: solid 0px black;
+	
+	width: 540px;
+	height: 30px;
+	
+	margin: 5px 5px;
+	
+	text-align: center;
+	line-height: 30px;
+}
+
+#joinForm #content {
+	border: solid 0px blue;
+	width: 540px;
+	height: 290px;
+	
+	margin: 0px 5px;
+}
+
+#joinForm #functions {
+	border: solid 0px black;
+	margin: 1px 5px;
+	
+	width: 540px;
+	height: 30px;
+	
+	text-align: center;
+	line-height: 30px;
+}
+
+#joinForm .category {	
+	font-size: 15px;
+	
+	border: solid 0px green;
+	
+	width: 540px;
+	height: 28px;
+}
+
+#joinForm span {
+	float: left;
+}
+
+#joinForm .index {
+	font-size: 14px;
+	
+	border: solid 1px black;
+	margin: 0px 0px 0px 5px;
+	
+	width: 139px;
+	height: 28px;
+	
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	
+	text-align: center;
+	line-height: 28px;
+	
+	display: block;
+}
+
+#joinForm .userInfo {
+	border: solid 1px black;
+	width: 390px;
+	height: 28px;
+	
+	border-bottom-width: 0px;
+	
+	line-height: 28px;
+	
+	display: block;
+}
+
+#job {
+	width: 100px;
+}
+ 

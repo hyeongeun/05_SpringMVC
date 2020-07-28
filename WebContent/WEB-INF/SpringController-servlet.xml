@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<!-- AOP -->
+	<bean id ="hAspect" class="com.java.aop.HAspect"/>
+	
+	<aop:config>
+		<aop:aspect id = "exAspect" ref="hAspect">
+			<aop:pointcut expression ="within(com.java..*)" id="pMethod"/>
+			<aop:around method="advice" pointcut-ref="pMethod"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<!-- Spring DB -->
+	<bean id="driverManagerDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>	
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>	
+		<property name="username" value="mvc"/>	
+		<property name="password" value="1234"/>	
+	</bean>
+	
+	<!-- MyBatis -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="driverManagerDataSource"/>
+		<property name="mapperLocations" value="classpath:com/java/member/dao/mapper/MemberMapper.xml"></property>
+	</bean>
+	
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean"/>
+	</bean>
+
+	<!-- HandlerMapping / UI 요청이 들어오면 해당 클래스를 찾아라 -->
+	<bean id = "HandlerMapping" class = "org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" >
+		<property name="mappings">
+			<props>
+				<prop key="/member/*.do">memberController</prop>
+			</props>
+		</property>	
+	</bean>
+	
+	<bean id="propertiesMethodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<property name="mappings">
+			<props>
+				<prop key="/member/test.do">testing</prop>
+				<prop key="/member/register.do">memberRegister</prop>
+				<prop key="/member/registerOk.do">memberRegisterOk</prop>
+				<prop key="/member/idCheck.do">memberIdCheck</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- MemberController -->
+	<bean id="memberController" class="com.java.member.controller.MemberController">
+		<constructor-arg ref="memberServiceImp"/>
+		<property name="methodNameResolver" ref="propertiesMethodNameResolver"></property>
+	</bean>
+	
+	
+	<!-- MemberService -->
+	<bean id="memberServiceImp" class="com.java.member.service.MemberServiceImp">
+		<constructor-arg ref="memberDaoImp"/>
+	</bean>
+	
+	<!-- MemberDAO -->
+	<bean id="memberDaoImp" class="com.java.member.dao.MemberDaoImp">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+	</bean>
+	
+	<!-- MVC RequestDispatcher / forward -->
+	<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/"/>
+		<property name="suffix" value=".jsp"/>		
+	</bean>
+</beans>

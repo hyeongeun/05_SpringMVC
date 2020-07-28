@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dto.memberDto">					 <!-- mapper가 위치하고 있는 경로를 작성 -->
+
+	<!-- DB에서 작성한 칼럼명과 DTO 객체의 필드명이 다를 경우 MyBatis가 제대로 작동하지 않는다. -->
+	<!-- 따라서, resultMap을 사용하여 다른 이름을 맞춰준다. -->
+	<resultMap type="com.java.member.dto.MemberDTO" id="member_dto">			 <!-- column : db 칼럼명, property : dto 칼럼명 순서 -->
+		<result column="num" property="number"></result>
+		<result column="id" property="id"></result>
+		<result column="password" property="password"></result>
+		<result column="name" property="name"></result>
+		<result column="jumin1" property="jumin1"></result>
+		<result column="jumin2" property="jumin2"></result>
+		<result column="email" property="email"></result>
+		<result column="zipcode" property="zipcode"></result>
+		
+		<result column="address" property="address"></result>
+		<result column="job" property="job"></result>
+		<result column="mailing" property="mailing"></result>
+		<result column="interest" property="interest"></result>
+		<result column="member_level" property="memberLevel"></result>
+		<result column="register_date" property="registerDate"></result>
+	</resultMap>
+
+
+	<insert id="member_insert" parameterType="com.java.member.dto.MemberDTO" > <!-- parameterType은 풀패키지명을 작성한다. insert, update, delete는 resultType 지정하지 않는다. -->
+		insert into member values(
+			member_num_seq.nextval,
+			#{id},
+			#{password},
+			#{name},
+			#{jumin1},
+			#{jumin2},
+			#{email},
+			#{zipcode},
+			#{address},
+			#{job},
+			#{mailing},
+			#{interest},
+			#{memberLevel},
+			sysdate
+		)
+	</insert>
+	
+	<select id="member_id_check" parameterType="String" resultType="String"> <!--기본 타입은 패키지명 생략 가능하다.-->
+		select id from member where id=#{id}
+	</select>
+<!--  
+	<select id="member_zipcode" parameterType="String" resultType="com.java.member.model.ZipcodeDTO">
+		select * from zipcode where dong=#{checkDong}	
+	</select>
+	
+	<select id="member_login" parameterType="java.util.Map" resultType="String">
+		select member_level from member where id=#{id} and password=#{password}
+	</select>
+	
+	필드명을 맞춰준 경우에는 resultType이 아닌 resultMap을 사용한다.
+	<select id="member_select" parameterType="String" resultMap="member_dto">
+		select * from member where id=#{id}
+	</select>
+	
+	<update id="member_update" parameterType="com.java.member.dto.MemberDTO">
+		update member set 
+		password=#{password},
+		email=#{email},
+		zipcode=#{zipcode},
+		address=#{address},
+		job=#{job},
+		mailing=#{mailing},
+		interest=#{interest} 
+		where num=#{number}
+	</update>
+	
+	<delete id="member_delete" parameterType="java.util.Map">
+		delete from member where id=#{id} and password=#{password}
+	</delete> -->
+	
+</mapper>
+
+

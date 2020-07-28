@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+#title {
+	color: #282828;
+	font-size: 18px;
+	font-weight: bold;
+	
+	align: center;
+}
+
+#list > a {
+	color: #5a5a5a;
+	font-size: 14px;
+	
+	text-decoration: none;
+}
+
+#list > a:hover {
+	text-decoration: underline;
+}
+
+#listHeader {
+	
+	align: center;
+	font-size: 16px;
+	color: #000069;
+}

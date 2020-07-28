@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+#closeBtn {
+	align: center;
+
+	
+	text-align: center;
+}
+
+#closeBtn > a {	
+	text-decoration: none;
+	color: black;	
+	font-size: 12px;
+	background-color: #dcdcdc;
+	
+	border: 1px solid black;
+	border-radius: 3px;
+	
+	padding: 2px 8px;
+}
+
+#impossible > span {
+	align: center;
+	
+	color: #FF5050;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#possible > span {
+	align: center;
+	
+	color: #1478FF;
+	font-size: 14px;
+	font-weight: bold;
+}
