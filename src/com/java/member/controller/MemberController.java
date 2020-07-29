@@ -2,6 +2,7 @@ package com.java.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
@@ -49,7 +50,6 @@ public class MemberController extends MultiActionController{		//command
 	
 	public ModelAndView memberRegister(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("member/register");
-				
 	}
 	
 	public ModelAndView memberRegisterOk(HttpServletRequest request, HttpServletResponse response, MemberDTO memberDto) {
@@ -72,6 +72,57 @@ public class MemberController extends MultiActionController{		//command
 		return mav;
 	}
 	
+	public ModelAndView memberZipcode(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		
+		memberService.memberZipcode(mav);
+		
+		return mav;
+	}
+	
+	public ModelAndView logIn(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("member/login");
+	}
+	
+	public ModelAndView logInOk(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		
+		memberService.logInCheck(mav);
+		
+		return mav;
+	}
+	
+	public ModelAndView main(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("member/main");
+	}
+	
+	public ModelAndView logOut(HttpServletRequest request, HttpServletResponse response) {
+		
+		HttpSession session=request.getSession();
+		
+		if(!session.isNew()) {
+			String id=(String)session.getAttribute("id");
+			String memberLevel=(String)session.getAttribute("memberLevel");
+		}
+		
+		return new ModelAndView("member/logout");
+	}
+	
+	public ModelAndView memberUpdate(HttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView mav = new ModelAndView();
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		
+		mav.addObject("id", id);
+		
+		//memberService.memberUpdate(mav);
+		
+		
+		return mav;
+	}
 	
 	
 }

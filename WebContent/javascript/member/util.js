@@ -3,5 +3,5 @@
  */
 
 function idCheckFunc(obj) {
-	//alert("OK");
+	alert("OK");
 }

@@ -14,7 +14,7 @@
 
 <body>
 	<div id="board">
-
+		${boardNumber},${groupNumber},${sequenceNumber},${sequenceLevel}
 		<div class="list">
 			<a href="${root}/fileBoard/list.do">글목록</a>
 		</div>

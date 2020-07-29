@@ -143,8 +143,11 @@ function sendAddress(zipcode,sido,gugun,dong,ri,bunji) {
 	var address=sido+" "+gugun+" "+dong+" "+ri+" "+bunji;
 	// alert(zipcode+"\n"+address);
 
-	opener.createForm.zipcode.value=zipcode;
-	opener.createForm.address.value=address;
+	//opener.createForm.zipcode.value=zipcode;
+	//opener.createForm.address.value=address;
+	
+	$(opener.document).find("input[name='zipcode']").val(zipcode);
+	$(opener.document).find("input[name='address']").val(address);
 	
 	self.close();
 }

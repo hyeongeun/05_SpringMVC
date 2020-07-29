@@ -7,5 +7,13 @@ public interface MemberSerivce {
 	public void memberRegisterOk(ModelAndView mav);
 	
 	public void memberIdCheck(ModelAndView mav);
+	
+	public void memberZipcode(ModelAndView mav);
+	
+	public void logInCheck(ModelAndView mav);
+
+	public void memberUpdate(ModelAndView mav);
+
+
 
 }
