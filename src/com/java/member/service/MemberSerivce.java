@@ -14,6 +14,10 @@ public interface MemberSerivce {
 
 	public void memberUpdate(ModelAndView mav);
 
+	public void memberDeleteOk(ModelAndView mav);
+
+	public void memberUpdateOk(ModelAndView mav);
+
 
 
 }

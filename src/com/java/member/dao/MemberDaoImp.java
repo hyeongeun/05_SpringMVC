@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.java.member.dto.MemberDTO;
 import com.java.member.dto.ZipcodeDTO;
@@ -56,5 +57,30 @@ public class MemberDaoImp implements memberDao {
 		String value = sqlSessionTemplate.selectOne("member_login",hashMap);
 		
 		return value;
+	}
+
+	@Override
+	public int memberDeleteOk(String id, String password) {
+		Map<String,String> hashMap=new HashMap<String,String>();
+		hashMap.put("id",id);
+		hashMap.put("password",password);
+		
+		int value = sqlSessionTemplate.delete("member_delete", hashMap);
+		
+		return value;
+	}
+
+	@Override
+	public MemberDTO MemberSelect(String id) {
+		
+		MemberDTO memberDto = sqlSessionTemplate.selectOne("member_select", id);
+		
+		return memberDto;
+	}
+
+	@Override
+	public int memberUpdate(MemberDTO memberDto) {
+		int check = sqlSessionTemplate.update("member_update", memberDto);
+		return check;
 	}
 }

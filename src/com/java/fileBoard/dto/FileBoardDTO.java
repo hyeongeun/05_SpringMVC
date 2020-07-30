@@ -22,7 +22,7 @@ public class FileBoardDTO {
 	private String path;
 	private long fileSize;
 	
-	private HashMap<String,String> dataMap;
+
 	
 	public FileBoardDTO() {
 		
@@ -160,26 +160,6 @@ public class FileBoardDTO {
 		this.fileSize = fileSize;
 	}
 	
-	public HashMap<String, String> getDataMap() {
-		return dataMap;
-	}
-
-	public void setDataMap(HashMap<String, String> dataMap) {
-		this.dataMap = dataMap;
-		//System.out.println(dataMap);
-		
-		setBoardNumber(Integer.parseInt(dataMap.get("boardNumber")));
-		setGroupNumber(Integer.parseInt(dataMap.get("groupNumber")));
-		setSequenceNumber(Integer.parseInt(dataMap.get("sequenceNumber")));
-		setSequenceLevel(Integer.parseInt(dataMap.get("sequenceLevel")));
-		setWriter(dataMap.get("writer"));
-		setSubject(dataMap.get("subject"));
-		setEmail(dataMap.get("email"));
-		setContent(dataMap.get("content"));
-		setPassword(dataMap.get("password"));
-
-	}
-
 	@Override
 	public String toString() {
 		return "BoardDTO [boardNumber=" + boardNumber + ", writer=" + writer + ", subject=" + subject + ", email="

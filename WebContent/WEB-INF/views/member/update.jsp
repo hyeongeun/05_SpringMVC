@@ -24,6 +24,7 @@
 				
 				<div id="content" style="height: 290px;">
 				<input type="hidden" name="number" value="${memberdto.number}">
+				<input type="hidden" name="memberLevel" value="${memberdto.memberLevel}">
 				
 					<!-- 아이디 -->
 					<div class="category">		
@@ -32,7 +33,7 @@
 						</span>
 						
 						<span class="userInfo">
-							*<input type="text" size="18" name="id" value="${memberdto.id}" disabled="disabled">
+							*<input type="text" size="18" name="id" value="${memberdto.id}" readonly="readonly">
 						</span>
 					</div>
 					
@@ -64,7 +65,7 @@
 						</span>
 						
 						<span class="userInfo">
-							*<input type="text" size="18" name="name" disabled="disabled" value="${memberdto.name}">
+							*<input type="text" size="18" name="name" readonly="readonly" value="${memberdto.name}">
 						</span>
 					</div>
 					
@@ -75,8 +76,8 @@
 						</span>
 						
 						<span class="userInfo">
-							*<input type="text" size="12" name="jumin1" disabled="disabled" value="${memberdto.jumin1}">
-							-<input type="text" size="12" name="jumin2" disabled="disabled" value="${memberdto.jumin2}">
+							*<input type="text" size="12" name="jumin1" readonly="readonly" value="${memberdto.jumin1}">
+							-<input type="text" size="12" name="jumin2" readonly="readonly" value="${memberdto.jumin2}">
 						</span>
 					</div>
 					

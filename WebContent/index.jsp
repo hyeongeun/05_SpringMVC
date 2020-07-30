@@ -25,7 +25,10 @@
 	<br><br>
 	
 	<h3>파일게시판</h3>
-	<a href="${root}/fileBoard/write.do">파일게시판 쓰기</a>
+	<a href="${root}/fileBoard/write.do">파일게시판 쓰기</a><br><br>
+	
+	<h3>파일게시판</h3>
+	<a href="${root}/fileBoard/list.do">파일게시판 목록</a>
 	
 	
 </body>

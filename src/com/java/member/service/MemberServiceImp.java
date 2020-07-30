@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.ModelAndView;
 
@@ -101,7 +102,46 @@ public class MemberServiceImp implements MemberSerivce {
 	@Override
 	public void memberUpdate(ModelAndView mav) {
 		Map<String, Object> map = mav.getModelMap();
+		HttpSession session = (HttpSession)map.get("session");
+		
+		String id = (String)session.getAttribute("id");
+		HAspect.logger.info(HAspect.logMsg+"id: "+id);
+		MemberDTO memberDto = memberDao.MemberSelect(id);
+		
+		mav.addObject("id", id);
+		mav.addObject("memberdto", memberDto);
+		
+		mav.setViewName("member/update");
 	}
+	
+	@Override
+	public void memberUpdateOk(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		MemberDTO memberDto = (MemberDTO)map.get("memberDto");
+		
+		int check = memberDao.memberUpdate(memberDto);
+		mav.addObject("check", check);
+		
+		mav.setViewName("member/updateOk");
+	}
+
+	@Override
+	public void memberDeleteOk(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		
+		String id = request.getParameter("id");
+		String password = request.getParameter("password");
+		
+		HAspect.logger.info(HAspect.logMsg+"id: "+id+" , password: "+password);
+		
+		int check = memberDao.memberDeleteOk(id,password);
+		
+		mav.addObject("check", check);
+		mav.setViewName("member/deleteOk");
+	}
+
+
 
 
 	

@@ -24,6 +24,9 @@
 				<prop key="/member/main.do">main</prop>
 				<prop key="/member/logout.do">logOut</prop>
 				<prop key="/member/update.do">memberUpdate</prop>
+				<prop key="/member/updateOk.do">memberUpdateOk</prop>
+				<prop key="/member/delete.do">memberDelete</prop>
+				<prop key="/member/deleteOk.do">memberDeleteOk</prop>
 			</props>
 		</property>
 	</bean>

@@ -114,15 +114,40 @@ public class MemberController extends MultiActionController{		//command
 		
 		ModelAndView mav = new ModelAndView();
 		HttpSession session=request.getSession();
-		String id=(String)session.getAttribute("id");
 		
-		mav.addObject("id", id);
-		
-		//memberService.memberUpdate(mav);
-		
+		mav.addObject("session", session);
+		memberService.memberUpdate(mav);
 		
 		return mav;
 	}
+	
+	public ModelAndView memberUpdateOk(HttpServletRequest request, HttpServletResponse response, MemberDTO memberDto) {
+		HAspect.logger.info(HAspect.logMsg+memberDto);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("memberDto", memberDto);
+		memberService.memberUpdateOk(mav);
+		
+		return mav;
+	}
+	
+	
+	public ModelAndView memberDelete(HttpServletRequest request, HttpServletResponse response) {
+		return new ModelAndView("member/delete");
+	}
+	
+	public ModelAndView memberDeleteOk(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request", request);
+		memberService.memberDeleteOk(mav);
+		
+		return mav;
+	}
+	
+	
+	
+
 	
 	
 }

@@ -58,11 +58,12 @@
 		select member_level from member where id=#{id} and password=#{password}
 	</select>
 	
-<!-- 	
-	필드명을 맞춰준 경우에는 resultType이 아닌 resultMap을 사용한다.
+
+	<!-- 필드명을 맞춰준 경우에는 resultType이 아닌 resultMap을 사용한다. -->
 	<select id="member_select" parameterType="String" resultMap="member_dto">
 		select * from member where id=#{id}
 	</select>
+		
 	
 	<update id="member_update" parameterType="com.java.member.dto.MemberDTO">
 		update member set 
@@ -78,7 +79,7 @@
 	
 	<delete id="member_delete" parameterType="java.util.Map">
 		delete from member where id=#{id} and password=#{password}
-	</delete> -->
+	</delete> 
 	
 </mapper>
 
