@@ -50,5 +50,4 @@
 	   <aop:advisor advice-ref="txAdvice" pointcut-ref="txPublic"/>
 	</aop:config> -->
 
-
 </beans>

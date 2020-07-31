@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>04_SpringMVC</display-name>
+  <display-name>05_SpringMVC</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -19,8 +19,6 @@
   			<param-value>
   			/WEB-INF/SpringController-servlet.xml
   			/WEB-INF/mybatis.xml
-  			/WEB-INF/member.xml
-  			/WEB-INF/fileBoard.xml
   			</param-value>
   		</init-param>
   	<load-on-startup>1</load-on-startup>
@@ -39,8 +37,6 @@
 		<param-value>
 			/WEB-INF/SpringController-servlet.xml
   			/WEB-INF/mybatis.xml
-  			/WEB-INF/member.xml
-  			/WEB-INF/fileBoard.xml
 		</param-value>
 	</context-param>
 	

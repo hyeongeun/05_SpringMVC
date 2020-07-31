@@ -5,25 +5,19 @@ import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.member.dto.MemberDTO;
 import com.java.member.dto.ZipcodeDTO;
 
+@Component
 public class MemberDaoImp implements memberDao {
 	
+	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	
-	public MemberDaoImp() {}
 
-	public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
-		this.sqlSessionTemplate = sqlSessionTemplate;
-	}
-
-	public MemberDaoImp(SqlSessionTemplate sqlSessionTemplate) {
-		super();
-		this.sqlSessionTemplate = sqlSessionTemplate;
-	}
 
 	@Override
 	public int memberInsert(MemberDTO memberDto) {

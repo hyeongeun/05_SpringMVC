@@ -119,12 +119,16 @@
 		select * from board where board_number=#{boardNumber}
 		]]>
 	</select>
-
+	<delete id="board_delete">
+		<![CDATA[
+		delete from board where board_number=to_number(#{boardNumber}) and password=#{password}
+		]]>
+	</delete>
 
 
 <!--
 	
-	<update id="board_update" parameterType="com.java.board.model.BoardDTO">
+	<update id="board_update" parameterType="com.java.fileBoard.dto.BoardDTO">
 		-<![CDATA[
 		update board set 
 		writer=#{writer}, 
@@ -137,10 +141,6 @@
 	</update>
 
 
-	<delete id="board_delete">
-		-<![CDATA[
-		delete from board where board_number=to_number(#{boardNumber}) and password=#{password}
-		]]>
-	</delete> -->
+	 -->
 
 </mapper>

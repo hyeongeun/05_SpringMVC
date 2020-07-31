@@ -3,6 +3,8 @@ package com.java.fileBoard.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.web.servlet.ModelAndView;
+
 import com.java.fileBoard.dto.FileBoardDTO;
 
 public interface FileBoardDao {
@@ -20,5 +22,6 @@ public interface FileBoardDao {
 	public FileBoardDTO fileBoardRead(int boardNumber);
 
 	public FileBoardDTO fileBoardSelect(int boardNumber);
+	public int fileBoardDelete(String password, int boardNumber);
 
 }

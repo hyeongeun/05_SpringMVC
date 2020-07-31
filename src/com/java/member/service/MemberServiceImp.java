@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.aop.HAspect;
@@ -13,20 +15,10 @@ import com.java.member.dao.memberDao;
 import com.java.member.dto.MemberDTO;
 import com.java.member.dto.ZipcodeDTO;
 
+@Component
 public class MemberServiceImp implements MemberSerivce {
-
+	@Autowired
 	private memberDao memberDao;
-	
-	public MemberServiceImp() {}
-
-	public MemberServiceImp(com.java.member.dao.memberDao memberDao) {
-		this.memberDao = memberDao;
-	}
-
-
-	public void setMemberDao(memberDao memberDao) {
-		this.memberDao = memberDao;
-	}
 
 	@Override
 	public void memberRegisterOk(ModelAndView mav) {
